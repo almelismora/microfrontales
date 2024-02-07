@@ -1,5 +1,11 @@
 $bg-color: #efefef;
 
+@font-face {
+    font-family: 'VR_Standard';
+    src: url(./fonts/estandar.woff2) format('woff2');
+}
+
 body {
     background-color: $bg-color;
+    font-family: 'VR_Standard';
 }

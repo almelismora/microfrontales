@@ -35,7 +35,15 @@ module.exports = (_, argv) => ({
                 test: /\.css|s[ac]ss$/i,
                 exclude: /node_modules/,
                 use: [ argv.mode === "development" ? "style-loader" : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
-            }
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2|mp3|mp4|wav|webm)$/i,
+                exclude: /node_modules/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/[name][ext]'
+                }
+            },
         ]
     },
     plugins: [
