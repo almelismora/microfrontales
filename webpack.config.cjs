@@ -44,6 +44,11 @@ module.exports = (_, argv) => ({
                     filename: 'assets/[name][ext]'
                 }
             },
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                use: ['html-loader']
+            }
         ]
     },
     plugins: [
