@@ -7,6 +7,9 @@ module.exports = (_, argv) => ({
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+    experiments: {
+        outputModule: true
+    },
     devServer: {
         port: 3000,
         historyApiFallback: true,
@@ -26,7 +29,18 @@ module.exports = (_, argv) => ({
                 test: /\.(ts|tsx|js|mjs|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
+            },
+            {
+                test: /\.css|s[ac]ss$/i,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            scriptLoading: 'module'
+        })
+    ]
 })
